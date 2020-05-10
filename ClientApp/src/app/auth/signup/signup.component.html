@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="title" class="form-control" style="width: 300px" ngModel name="email" required
+              minlength="6">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" style="width: 300px" name="password" required
+              ngModel minlength="6">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-outline-success">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

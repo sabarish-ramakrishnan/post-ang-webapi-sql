@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit()" [formGroup]="postForm">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              class="form-control"
+              style="width: 600px"
+              formControlName="title"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Image Path</label>
+            <input
+              type="text"
+              id="imagePath"
+              class="form-control"
+              style="width: 600px"
+              formControlName="imagePath"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <button type="button" (click)="filePicker.click()">
+              Pick Image
+            </button>
+            <label>{{ imagePreview }}</label>
+            <input
+              type="file"
+              name="postfile"
+              id="postfile"
+              #filePicker
+              (change)="onImagePicked($event)"
+              style="display: none"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="image-preview" *ngIf="imagePreview">
+            <img
+              [src]="imagePreview"
+              [alt]="postForm.value.title"
+              *ngIf="!invalidImage"
+              class="img img-thumbnail"
+            />
+            <div *ngIf="invalidImage">Please select valid image</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="content">Content</label>
+            <textarea
+              id="content"
+              class="form-control"
+              rows="4"
+              cols="80"
+              formControlName="content"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button
+          class="btn btn-success"
+          type="submit"
+          [disabled]="!postForm.valid"
+        >
+          Submit</button
+        >&nbsp;
+        <button
+          class="btn btn-danger"
+          [routerLink]="['/posts']"
+          routerLinkActive="router-link-active"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

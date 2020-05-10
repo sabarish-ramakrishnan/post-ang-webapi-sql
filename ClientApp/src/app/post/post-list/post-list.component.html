@@ -1,0 +1,13 @@
+<h1 *ngIf="!isOfficeflag">MY FOOD BLOGS</h1>
+<p>This blog is to write about your favourite food..</p>
+
+<p *ngIf="isLoading"><em>Loading...</em></p>
+
+<div *ngIf="isAuthenticated"><button class="btn btn-outline-success" [routerLink]="['/create-post']">New Post</button>&nbsp;</div>
+
+<div class="row" *ngIf="!isLoading && postList">
+  <div class="leftcolumn">
+    <app-post-item *ngFor="let item of postList; let i = index" [postItem]="item" [isAuthenticated]="isAuthenticated" [loggedInUserId]="loggedInUserId"></app-post-item>
+  </div>
+</div>
+<p *ngIf="!postList"><em>No blogs found!!</em></p>
